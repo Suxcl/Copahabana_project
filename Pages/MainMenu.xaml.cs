@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using copahabana_1.Klasy;
 
 
 
@@ -25,46 +26,27 @@ namespace copahabana_1.Pages
         public MainMenu()
         {
             InitializeComponent();
-            this.DataContext = this;
+
+            
+
+
         }
+
+
+        public static int wartosc = 3;
+
 
         // To poniżej znajduje który przycisk z panelu nawigacji został kliknięty i przekierowywuje na odpowidznią stronę
         private void Kliknieto_opcje(object sender, RoutedEventArgs e)
         {
             var Wybrana_opcja = e.OriginalSource as NavButton;
-            if(Wybrana_opcja != null) { NavigationService.Navigate(Wybrana_opcja.NavUri); }
+            if (Wybrana_opcja != null) { NavigationService.Navigate(Wybrana_opcja.NavUri); }
         }
 
-
-        public abstract class osoba
+        private void ZamknijProgram(object sender, RoutedEventArgs e)
         {
-            protected string imie { get; }
-            protected string nazw { get; }
-
-            public osoba(string imie, string nazw)
-            {
-                this.imie = imie;
-                this.nazw = nazw;
-            }
-
+            App.ZapiszSedziow();
+            System.Windows.Application.Current.Shutdown();
         }
-        public class Sedzia : osoba
-        {
-            public int rozegrane_spotkania { get; set; }
-            public Sedzia(string imie, string nazw) : base(imie, nazw) { }
-
-            public override string ToString()
-            {
-                return this.imie + " " + this.nazw;
-            }
-        }
-
-
-        public Sedzia sedzia1 = new Sedzia("Jan", "niezbędny");
-
-
-        public List<Sedzia> SedziaList { get; set; } = new List<Sedzia> { };
-
-
     }
 }

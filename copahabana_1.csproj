@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Dane\DaneSedziow.txt" />
     <None Remove="Images\blue_Square.png" />
     <None Remove="Images\red_Square.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Dane\DaneSedziow.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\red_Square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -10,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace copahabana_1
+namespace copahabana_1.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy Dodaj_Druzyne.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Dodaj_Druzyne : Window
     {
-        public MainWindow()
+        public Dodaj_Druzyne()
         {
             InitializeComponent();
-            App.WczytajSedziow();
         }
-        
     }
 }

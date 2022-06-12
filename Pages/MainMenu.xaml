@@ -20,11 +20,14 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
+        
+        
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Witaj na Plaży Copahabana" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
         <WrapPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <n:NavButton Text="Rozgrywki" ImageSource="/Images/red_Square.png" NavUri="/Pages/rozgrywki.xaml" />
             <n:NavButton Text="Drużyny" ImageSource="/Images/blue_Square.png" NavUri="/Pages/Druzyny.xaml" />
             <n:NavButton Text="Sędziowie" ImageSource="/Images/red_Square.png" NavUri="/Pages/Sedziowie.xaml" />
+            <n:NavButton Text="Wyjście" ImageSource="/Images/red_Square.png" NavUri="" Click="ZamknijProgram" />
         </WrapPanel>
 
 

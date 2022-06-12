@@ -11,16 +11,65 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="20"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Content="Druzyny" Grid.Row="2" Grid.Column="1" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Powrót" Command="NavigationCommands.BrowseBack" Margin="5"   />
+
+        <Button Grid.Row="1" Grid.Column="1" Content="Dodaj" Margin="2,5,2,5" Padding="10,5,10,5" Click="Dodaj_Druzyne_btn"></Button>
+        <Button Grid.Row="1" Grid.Column="2" Content="Edytuj" Margin="2,5,2,5" Padding="10,5,10,5" Click="Edytuj_Druzyne_btn"></Button>
+        <Button Grid.Row="1" Grid.Column="3" Content=" Usuń " Margin="2,5,2,5" Padding="10,5,10,5" Click="Usun_Druzyne_btn"></Button>
+
+        <ListBox Height="250" Name="ListaDruzyn_listobox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" 
+                 Margin="5,5,5,5" VerticalAlignment="Center" ItemTemplate="{DynamicResource DruzynaTemplate}" 
+                 SelectionChanged="listaDruzyn_listobox_selectionChange">
+            <ListBox.Resources>
+                <DataTemplate x:Key="DruzynaTemplate" x:Name="WybranyElement">
+                    <StackPanel>
+                        <TextBlock Text="{Binding nazwa}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.Resources>       
+        </ListBox>
+
+        <TextBlock Text="Informacje o Druzynie" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="1" Margin="40,0,40,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Nazwa" Grid.Row="2" Grid.Column="4"  Margin="100,0,40,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="" Name="Nazwa_druzyny_textblock" Grid.Row="2" Grid.Column="5"  Margin="40,0,40,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Zawodnicy" Grid.Row="3" Grid.Column="4"  Margin="100,0,40,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <ListView Name="ListaZawodnikow_listview" Grid.Row="3" Grid.Column="5" Grid.RowSpan="4" Margin="50,0,50,10"
+                  ItemTemplate="{DynamicResource ZawodnikTemplate}">
+            <ListView.Resources>
+                <DataTemplate x:Key="ZawodnikTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding imie }" HorizontalAlignment="left" 
+                                   VerticalAlignment="Top" />
+                        <TextBlock Text="{Binding nazw }" Margin="5,0,0,0" HorizontalAlignment="right" 
+                                   VerticalAlignment="Top"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.Resources>
+
+        </ListView>
+
+        <Button Grid.Row="7" Grid.Column="1" Content="Powrót" Grid.ColumnSpan="3" Margin="10" Padding="10,5,10,5" 
+                Command="NavigationCommands.BrowseBack"   />
+    
     </Grid>
 </Page>
