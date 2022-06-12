@@ -31,7 +31,7 @@ namespace copahabana_1.Pages
             temp.Add(new Zawodnik("Paweł", "Rudź4"));
             App.listaDruzyn.Add(new Druzyna("Bocian Boćki", temp));
 
-            this.ListaDruzyn_listobox.ItemsSource = App.GetListaDruzyn();
+            this.ListaDruzyn_listobox.ItemsSource = App.GetObsCollDruzyna();
 
 
         }
@@ -49,27 +49,42 @@ namespace copahabana_1.Pages
         {
             if(ListaDruzyn_listobox.SelectedItems.Count == 1)
             {
-                Druzyna? a = this.ListaDruzyn_listobox.SelectedItem as Druzyna;
-                var tak = new Edycja_Druzyny();
+                Druzyna a = this.ListaDruzyn_listobox.SelectedItem as Druzyna;
+                Edycja_Druzyny tak = new Edycja_Druzyny(a);
                 tak.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                tak.ShowDialog();
-                ListaDruzyn_listobox.Items.Refresh();
+                if (tak.ShowDialog() == false)
+                {
+                    (ListaDruzyn_listobox.SelectedItem as Druzyna).Zawodnicy = tak.Dr.Zawodnicy;
+                    
+                    
+                }
+                this.ListaDruzyn_listobox.ItemsSource = App.GetObsCollDruzyna();
+
             }
         }
         private void Usun_Druzyne_btn(object sender, RoutedEventArgs e)
         {
             if (ListaDruzyn_listobox.SelectedItems.Count != 0)
             {
-                Druzyna a = ListaDruzyn_listobox.SelectedItem as Druzyna;  // to jest tak zrobione bo inaczej daje błąd
-                App.listaDruzyn.Remove(a);                                 // czemu? nie wiem
+                Druzyna a = ListaDruzyn_listobox.SelectedItem as Druzyna;  
+                App.listaDruzyn.Remove(a);                                 
             }
         }
 
         private void listaDruzyn_listobox_selectionChange(object sender, SelectionChangedEventArgs e)
         {
-            Druzyna a = ListaDruzyn_listobox.SelectedItem as Druzyna;
-            Nazwa_druzyny_textblock.Text = a.nazwa;
-            ListaZawodnikow_listview.ItemsSource = a.Zawodnicy;
+            if (ListaDruzyn_listobox.Items.Count != 0)
+            {
+                Druzyna a = ListaDruzyn_listobox.SelectedItem as Druzyna;
+                Nazwa_druzyny_textblock.Text = a.nazwa;
+                ListaZawodnikow_listview.ItemsSource = a.Zawodnicy;
+            }
+            else
+            {
+                Nazwa_druzyny_textblock.Text = "";
+                ListaZawodnikow_listview.ItemsSource = null;
+            }
+            
         }
     }
 }

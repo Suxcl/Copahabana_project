@@ -8,15 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Dane\DaneSedziow.txt" />
     <None Remove="Images\blue_Square.png" />
     <None Remove="Images\red_Square.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Dane\DaneSedziow.txt">
+    <EmbeddedResource Include="DaneSedziow.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </EmbeddedResource>
     <Resource Include="Images\red_Square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

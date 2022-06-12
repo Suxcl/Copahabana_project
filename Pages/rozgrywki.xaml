@@ -11,17 +11,66 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="20"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Content="Rozgrywki" Grid.Row="2" Grid.Column="1" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Powrót" Command="NavigationCommands.BrowseBack" Margin="5"   />
+        
+
+
+        <ComboBox Grid.Row="1" Grid.Column="1" Width="80" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">>
+            
+        </ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="2" Width="80" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">>
+            
+        </ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="3" Width="80" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+
+        </ComboBox>
+
+        <ListBox Height="250" Width="240" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                 ItemTemplate="{DynamicResource RozgrywkaTemplate}" Name="Rozgrywki_listbox">
+            <ListBox.Resources>
+                <DataTemplate x:Key="RozgrywkaTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nazwa_rozgrywek}" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBlock Text="{Binding gra}" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <ProgressBar Width="80" HorizontalAlignment="Left" VerticalAlignment="Top"></ProgressBar>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+        <Button Content="Stwórz nową rozgrywkę" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5,0,0" ></Button>
+        
+        <Button Grid.Row="9" Grid.Column="1" Content="Powrót" Command="NavigationCommands.BrowseBack" Margin="5"   />
+
+        
+        <!-- na prawo -->
+
+        <TextBlock Text="Rozgrywki" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+
+
+
     </Grid>
     
     

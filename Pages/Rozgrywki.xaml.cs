@@ -23,6 +23,9 @@ namespace copahabana_1.Pages
         public Rozgrywki()
         {
             InitializeComponent();
+
+            Rozgrywki_listbox.ItemsSource = App.GetObsCollRozgrywki();
+
         }
     }
 }

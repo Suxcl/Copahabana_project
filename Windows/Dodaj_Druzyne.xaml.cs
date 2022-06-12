@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using copahabana_1.Klasy;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace copahabana_1.Windows
 {
@@ -22,6 +25,50 @@ namespace copahabana_1.Windows
         public Dodaj_Druzyne()
         {
             InitializeComponent();
+            ListaZawodnikowDruzyny_listbox.ItemsSource = GetObsCollZaw();
+
+        }
+
+        public static ObservableCollection<Zawodnik> zawodnicy_listbox = new ObservableCollection<Zawodnik>();  
+        public ObservableCollection<Zawodnik> GetObsCollZaw() { return zawodnicy_listbox; }
+        public List<Zawodnik> GetzawAsLista() { return new List<Zawodnik>((IEnumerable<Zawodnik>)zawodnicy_listbox); }
+
+
+        private void Dodaj_zawodnika_btn(object sender, RoutedEventArgs e)
+        {
+            Dodaj_Zawodnika dz = new Dodaj_Zawodnika();
+            dz.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            Nullable<bool> wynik = dz.ShowDialog();
+
+            if (wynik == false)
+            {
+                Zawodnik ontu = dz.on;
+                zawodnicy_listbox.Add(ontu);
+                ListaZawodnikowDruzyny_listbox.Items.Refresh();
+            }
+            
+
+        }
+
+        private void Usun_zawodnika_btn(object sender, RoutedEventArgs e)
+        {
+            if(ListaZawodnikowDruzyny_listbox.SelectedItems.Count > 0)
+            {
+                Zawodnik a = ListaZawodnikowDruzyny_listbox.SelectedItem as Zawodnik;
+                zawodnicy_listbox.Remove(a);
+            }
+        }
+
+        private void Dodaj_druzyne_btn(object sender, RoutedEventArgs e)
+        {
+            
+            if (name_druzyna.Text != "" && zawodnicy_listbox.Count() > 0)
+            {
+                App.listaDruzyn.Add(new Druzyna(name_druzyna.Text, GetzawAsLista()));
+                
+                this.Close();
+            }
+            
         }
     }
 }

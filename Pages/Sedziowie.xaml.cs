@@ -29,16 +29,6 @@ namespace copahabana_1.Pages
         {
             InitializeComponent();
 
-            App.listaSedziow.Add(new Sedzia("mie", "tak"));
-
-            
-            StreamReader sr = File.OpenText(@"F:\MegaSync\Sem II\PO\kratka\test\copahabana_1\Dane\DaneSedziow.txt");
-            string tak = sr.ReadLine();
-            Trace.WriteLine("=====");
-            Trace.WriteLine(tak);
-            Trace.WriteLine("=====");
-            //this.cos.Text = tak;
-
             this.ListaSedziow_listbox.ItemsSource = App.GetObsCollSedzia();
 
 

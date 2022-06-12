@@ -6,7 +6,53 @@
         xmlns:local="clr-namespace:copahabana_1.Windows"
         mc:Ignorable="d"
         Title="Edycja_Druzyny" Height="450" Width="800">
-    <Grid>
-        
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition SharedSizeGroup="A" ></ColumnDefinition>
+            <ColumnDefinition SharedSizeGroup="A" ></ColumnDefinition>
+            <ColumnDefinition SharedSizeGroup="A" ></ColumnDefinition>
+            <ColumnDefinition SharedSizeGroup="A" ></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" TextAlignment="Center" Text="Edytuj Druzyne" Margin="2,0,2,10"></TextBlock>
+
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Nazwa Drużyny" Margin="2"></TextBlock>
+        <TextBox x:Name="name_druzyna" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Text=""  Margin="2"></TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Zawodnicy" Margin="2"></TextBlock>
+
+        <ListBox Name="ListaZawodnikowDruzyny_listbox" ItemTemplate="{DynamicResource ZawodnikTemplate}" 
+                 Grid.Row="3" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="2" Height="50" >
+            <ListBox.Resources>
+                <DataTemplate x:Key="ZawodnikTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding imie }" HorizontalAlignment="left" 
+                                   VerticalAlignment="Top" />
+                        <TextBlock Text="{Binding nazw }" Margin="5,0,0,0" HorizontalAlignment="right" 
+                                   VerticalAlignment="Top"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+
+        <Button Content="Dodaj Zawownika" Grid.Row="7" Grid.Column="2" Margin="2" Padding="10,5,10,5" Click="Dodaj_zawodnika_btn"/>
+        <Button Content="Usuń Zawodnika" Grid.Row="7" Grid.Column="3" Margin="2" Padding="10,5,10,5" Click="Usun_zawodnika_btn"/>
+        <Button Content="Zapisz Zmiany" Grid.Row="7" Grid.Column="4" Margin="2" Padding="10,5,10,5" Click="Zapisz_zmiany_btn"/>
+
     </Grid>
 </Window>
